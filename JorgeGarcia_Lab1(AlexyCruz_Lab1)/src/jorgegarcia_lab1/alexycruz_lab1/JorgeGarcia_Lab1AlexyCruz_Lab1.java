@@ -16,6 +16,7 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
     static ArrayList<Clase> clases = new ArrayList();
     static ArrayList<Maestro> maestros = new ArrayList();
     static ArrayList<Alumno> alumnos = new ArrayList();
+    static Object logged = new Object();
 
     /**
      * @param args the command line arguments
@@ -332,12 +333,14 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
                     JOptionPane.showMessageDialog(null, "Contraseña Incorrecta");
                 }
             }
+            
         }
     }
     
     public static boolean usuarioValido(String user){
         for (int i = 0; i < alumnos.size() ; i++) {
-            if (alumnos.get(i).getUser().equals(user) ){
+            if (alumnos.get(i).getUser().equals(user) || 
+                    maestros.get(i).getUser().equals(user) ){
                 return true;
             }else{
                 return false;
@@ -348,7 +351,8 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
     
     public static boolean contraseñaValida(String user, String pass){
         for (int i = 0; i < alumnos.size() ; i++) {
-            if (alumnos.get(i).getPassword().equals(pass) && alumnos.get(i).getUser().equals(user)){
+            if ((alumnos.get(i).getPassword().equals(pass) && alumnos.get(i).getUser().equals(user))
+                    || (maestros.get(i).getPassword().equals(pass) && maestros.get(i).getUser().equals(user))){
                 return true;
             }else{
                 return false;
