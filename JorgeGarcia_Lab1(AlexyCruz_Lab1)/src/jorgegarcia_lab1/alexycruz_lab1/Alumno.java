@@ -84,8 +84,8 @@ public class Alumno {
         return dinero;
     }
     
-    public void setClases(String c){
-        this.clases.add(c);
+    public void setClases(Clase c){
+        this.clasesA.add(c);
     }
     
     public void clasesString(){

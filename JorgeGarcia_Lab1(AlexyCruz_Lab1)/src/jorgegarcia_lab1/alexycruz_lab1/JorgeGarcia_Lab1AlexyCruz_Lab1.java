@@ -29,7 +29,7 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
                     administracion();
                     break;
                 case 2:
-                    matricula(new Alumno);
+                    matricula(new Alumno());
                     break;
                 case 3:
                     break;
@@ -125,10 +125,7 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
                 + "Ingrese el nombre de la clase:"
                 )
         );
-        c.setSeccion(JOptionPane.showInputDialog(""
-                + "Ingrese la seccion de la clase:"
-                )
-        );
+        c.setSeccion( seccion(c) );
         c.setMaxAlumnos(Integer.parseInt(JOptionPane.showInputDialog(""
                 + "Ingrese la cantidad maxima de alumnos de la clase:"
                 )
@@ -142,6 +139,28 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
                 )
         ));
         return c;
+    }
+    
+    public static String seccion(Clase c){
+        boolean repetida = true;
+        String seccion = "";
+        while (repetida == true ){
+        seccion = (JOptionPane.showInputDialog(""
+                + "Ingrese la seccion de la clase:"
+                )
+        );
+        repetida = existe(seccion);
+        }
+        return seccion;
+    }
+    
+    public static boolean existe(String seccion){
+        for (int i = 0; i < clases.size(); i++) {
+            if (clases.get(i).getSeccion().equals("seccion")){
+                return true;
+            }
+        }
+        return false;
     }
     
     public static void listarClases(){
@@ -274,15 +293,16 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
                 if (clases.get(i).getSeccion().equals(seccion)){
                     if (clases.get(i).llena() == false){
                         if (clases.get(i).valorTotal() < fondos_restantes){
-                            
+                            a.setClases(clases.get(i));
+                            clases.get(i).addAlumnos(a);
                         }else{
-                            JOptionPane.showInputDialog("Fondos insuficientes");
+                            JOptionPane.showMessageDialog(null, "Fondos insuficientes");
                         }
                     }else{
-                        JOptionPane.showInputDialog("Clase llena");
+                        JOptionPane.showMessageDialog(null, "Clase llena");
                     }
                 }else{
-                    JOptionPane.showInputDialog("Clase no existe");
+                    JOptionPane.showMessageDialog(null, "Clase no existe");
                 }
             }
         }

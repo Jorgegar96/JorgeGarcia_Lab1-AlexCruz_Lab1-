@@ -17,7 +17,7 @@ public class Clase {
     private int max_alumnos;
     private String maestro;
     private int unidades_val;
-    private ArrayList<String> alumnos;
+    private ArrayList<Alumno> alumnos;
     private int cost;
     private boolean asignada = false;
     private int cant_alumnos;
@@ -75,7 +75,7 @@ public class Clase {
         return unidades_val;
     }
     
-    public void addAlumnos(String alumno){
+    public void addAlumnos(Alumno alumno){
         cant_alumnos++;
         alumnos.add(alumno);
     }
