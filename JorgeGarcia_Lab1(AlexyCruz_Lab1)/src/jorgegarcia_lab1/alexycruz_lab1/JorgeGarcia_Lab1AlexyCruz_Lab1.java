@@ -266,15 +266,23 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
     
     public static String agregarClases(Alumno a){
         String seccion = "";
-        int fondos_restantes = a.getFondos();
+        double fondos_restantes = a.getFondos();
         while (!seccion.equals("n" )){
             seccion = JOptionPane.showInputDialog("Ingrese las clases que desea agregar\n"
                         + "Presione 'n' para salir");
             for (int i = 0; i < clases.size() ; i++) {
                 if (clases.get(i).getSeccion().equals(seccion)){
                     if (clases.get(i).llena() == false){
-                        if ()
+                        if (clases.get(i).valorTotal() < fondos_restantes){
+                            
+                        }else{
+                            JOptionPane.showInputDialog("Fondos insuficientes");
+                        }
+                    }else{
+                        JOptionPane.showInputDialog("Clase llena");
                     }
+                }else{
+                    JOptionPane.showInputDialog("Clase no existe");
                 }
             }
         }
