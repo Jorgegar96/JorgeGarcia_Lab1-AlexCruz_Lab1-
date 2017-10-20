@@ -13,14 +13,19 @@ import java.util.ArrayList;
  */
 public class Alumno {
     String nombre;
-    String seccion;
-    int max_alumnos;
-    String maestro;
-    String unidades_val;
+    String n_cuenta;
+    String carrera;
+    int edad;
+    private int dinero;
+    private String usuario;
+    private String contraseña;
+    private ArrayList<String> clases;
+    private ArrayList<Clase> clasesA;
     ArrayList<String> alumnos;
     
     public Alumno(){
-        clase = new ArrayList();
+        clases = new ArrayList();
+        clasesA = new ArrayList();
     }
     
     public void setName(String nombre){
@@ -31,20 +36,20 @@ public class Alumno {
         return nombre;
     }
     
-    public void setTitulo(String titulo){
-        this.titulo = titulo;
+    public void setCuenta(String n_cuenta){
+        this.n_cuenta = n_cuenta;
     }
     
-    public String getTitulo(){
-        return titulo;
+    public String getCuenta(){
+        return n_cuenta;
     }
     
-    public void setMaestría(String maestria){
-        this.maestria = maestria;
+    public void setCarrera(String carrera){
+        this.carrera = carrera;
     }
     
-    public String getMaestria(){
-        return maestria;
+    public String getCarrera(){
+        return carrera;
     }
     
     public void setUser(String usuario){
@@ -63,23 +68,29 @@ public class Alumno {
         return contraseña;
     }
     
-    public void setMaxClases(int max_clases){
-        this.max_clases = max_clases;
+    public void setEdad(int edad){
+        this.edad = edad;
     }
     
-    public int getMaxClases(){
-        return max_clases;
+    public int getEdad(){
+        return edad;
     }
     
-    public void setClase(String clase){
-        this.clase.add(clase);
+    public void setFondos(int dinero){
+        this.dinero = dinero;
     }
     
-    public ArrayList getClase(){
-        return clase;
+    public int getFondos(){
+        return dinero;
     }
     
-    public void setSalary(int salario){
-        this.salario = salario;
+    public void setClases(Clase c){
+        this.clasesA.add(c);
+    }
+    
+    public void clasesString(){
+        for (int i = 0; i < clasesA.size() ; i++) {
+            clases.add(clasesA.get(i).getSeccion());
+        }
     }
 }

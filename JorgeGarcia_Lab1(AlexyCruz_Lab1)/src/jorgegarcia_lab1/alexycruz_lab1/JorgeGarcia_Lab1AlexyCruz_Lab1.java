@@ -29,6 +29,7 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
                     administracion();
                     break;
                 case 2:
+                    matricula();
                     break;
                 case 3:
                     break;
@@ -212,9 +213,10 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
     public static void asignarClases(Maestro m){
         int clases_asignadas = 0;
         String clase = "";
-        String lista_disp = "Clases Disponibles\n\n";
+        String lista_disp = "";
         while (clases_asignadas <= m.getMaxClases() || clase.equals("n") ){
-            lista_disp += clasesDisp(lista_disp) + "\n Clases Asignadas = "
+            lista_disp = "Clases Disponibles\n\n" + 
+                    clasesDisp(lista_disp) + "\n Clases Asignadas = "
                     + clases_asignadas + " de " + m.getMaxClases()
                     + "\nIngrese 's' para terminar";
             clase = JOptionPane.showInputDialog(""
@@ -232,6 +234,7 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
             if ( clases.get(x).getSeccion().equals(seccion) 
                     && clases.get(x).estado() == false){
                 clases.get(x).asignarClase();
+                clases.get(x).setMaestro(m.getName());
                 m.addClassA(clases.get(x));
                 return true;
             }
@@ -249,4 +252,8 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
         }
         return lista2;
     }
+    
+    public static void matricula(){
+        
+    } 
 }

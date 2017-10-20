@@ -91,4 +91,8 @@ public class Maestro {
     public void setSalary(int salario){
         this.salario = salario;
     }
+    
+    public int getSalary(){
+        return salario;
+    }
 }
