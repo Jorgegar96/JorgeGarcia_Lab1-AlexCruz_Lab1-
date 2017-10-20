@@ -15,6 +15,7 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
     static String lista;
     static ArrayList<Clase> clases = new ArrayList();
     static ArrayList<Maestro> maestros = new ArrayList();
+    static ArrayList<Alumno> alumnos = new ArrayList();
 
     /**
      * @param args the command line arguments
@@ -32,6 +33,7 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
                     matricula(new Alumno());
                     break;
                 case 3:
+                    logIn();
                     break;
                 default:
                     resp = 1;
@@ -281,6 +283,7 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
         a.setUser(JOptionPane.showInputDialog("Ingrese su Usuario"));
         a.setPassword(JOptionPane.showInputDialog("Ingrese una contraseña"));
         agregarClases(a);
+        alumnos.add(a);
     } 
     
     public static String agregarClases(Alumno a){
@@ -292,9 +295,11 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
             for (int i = 0; i < clases.size() ; i++) {
                 if (clases.get(i).getSeccion().equals(seccion)){
                     if (clases.get(i).llena() == false){
-                        if (clases.get(i).valorTotal() < fondos_restantes){
+                        if (clases.get(i).valorTotal() <= fondos_restantes){
                             a.setClases(clases.get(i));
+                            System.out.println(clases.get(i).valorTotal());
                             clases.get(i).addAlumnos(a);
+                            fondos_restantes -= clases.get(i).valorTotal();
                         }else{
                             JOptionPane.showMessageDialog(null, "Fondos insuficientes");
                         }
@@ -308,5 +313,47 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
         }
         
         return seccion;
+    }
+    
+    public static void logIn(){
+        boolean usuario = false;
+        boolean contraseña = false;
+        String user = "";
+        String pass = "";
+        while (usuario == false || contraseña == false){
+            while (usuario == false){
+                user = JOptionPane.showInputDialog("Ingrese su usuario");
+                usuario = usuarioValido(user);
+            }
+            while (contraseña == false){
+                pass = JOptionPane.showInputDialog("Ingrese la contraseña");
+                contraseña = contraseñaValida(user, pass);
+                if (contraseña == false){
+                    JOptionPane.showMessageDialog(null, "Contraseña Incorrecta");
+                }
+            }
+        }
+    }
+    
+    public static boolean usuarioValido(String user){
+        for (int i = 0; i < alumnos.size() ; i++) {
+            if (alumnos.get(i).getUser().equals(user) ){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return false;
+    }
+    
+    public static boolean contraseñaValida(String user, String pass){
+        for (int i = 0; i < alumnos.size() ; i++) {
+            if (alumnos.get(i).getPassword().equals(pass) && alumnos.get(i).getUser().equals(user)){
+                return true;
+            }else{
+                return false;
+            }
+        }
+        return false;
     }
 }
