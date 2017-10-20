@@ -20,6 +20,7 @@ public class Clase {
     private ArrayList<String> alumnos;
     private int cost;
     private boolean asignada = false;
+    private int cant_alumnos;
     
     public void asignarClase(){
         asignada = true;
@@ -31,6 +32,7 @@ public class Clase {
     
     public Clase(){
         alumnos = new ArrayList();
+        cant_alumnos = 0;
     }
     
     public void setName(String nombre){
@@ -74,6 +76,7 @@ public class Clase {
     }
     
     public void addAlumnos(String alumno){
+        cant_alumnos++;
         alumnos.add(alumno);
     }
     
@@ -91,6 +94,22 @@ public class Clase {
     
     public String toString(){
         return nombre;
+    }
+    
+    public boolean llena(){
+        if (cant_alumnos <= max_alumnos){
+            return false;
+        }else{
+            return true;
+        }
+    }
+    
+    public double valorTotal(){
+        int costo_t = cost;
+        for (int i = 0; i < 5; i++) {
+            costo_t *= (costo_t * (0.2 * i) );
+        }
+        return costo_t;
     }
    
 }

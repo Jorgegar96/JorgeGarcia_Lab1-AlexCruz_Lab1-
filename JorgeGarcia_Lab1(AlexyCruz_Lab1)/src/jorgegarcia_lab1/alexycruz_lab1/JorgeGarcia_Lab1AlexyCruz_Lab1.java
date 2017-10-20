@@ -262,10 +262,23 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
         a.setUser(JOptionPane.showInputDialog("Ingrese su Usuario"));
         a.setPassword(JOptionPane.showInputDialog("Ingrese una contraseña"));
         agregarClases(a);
-        a.setClases(JOptionPane.showInputDialog("Ingrese las clases que desea agregar"));
     } 
     
-    public static void agregarClases(Alumno a){
+    public static String agregarClases(Alumno a){
+        String seccion = "";
+        int fondos_restantes = a.getFondos();
+        while (!seccion.equals("n" )){
+            seccion = JOptionPane.showInputDialog("Ingrese las clases que desea agregar\n"
+                        + "Presione 'n' para salir");
+            for (int i = 0; i < clases.size() ; i++) {
+                if (clases.get(i).getSeccion().equals(seccion)){
+                    if (clases.get(i).llena() == false){
+                        if ()
+                    }
+                }
+            }
+        }
         
+        return seccion;
     }
 }
