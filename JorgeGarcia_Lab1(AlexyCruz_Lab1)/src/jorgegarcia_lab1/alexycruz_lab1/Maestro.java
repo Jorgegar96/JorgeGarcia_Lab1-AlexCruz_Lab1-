@@ -19,11 +19,13 @@ public class Maestro {
     private String contraseña;
     private int max_clases;
     private ArrayList<String> clase;
+    private ArrayList<Clase> clasesA;
     private int salario;
     
     
     public Maestro(){
         clase = new ArrayList();
+        clasesA = new ArrayList();
     }
     
     public void setName(String nombre){
@@ -76,6 +78,10 @@ public class Maestro {
     
     public void addClase(String clase){
         this.clase.add(clase);
+    }
+    
+    public void addClassA(Clase c){
+        clasesA.add(c);
     }
     
     public ArrayList getClase(){

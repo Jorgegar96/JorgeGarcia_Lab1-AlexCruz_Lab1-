@@ -166,10 +166,14 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
                     maestros.add( crearMaestro(new Maestro() ) );
                     break;
                 case "2":
-                    listarClases();
+                    listarMaestros();
                     break;
             }
         }
+    }
+    
+    public static void listarMaestros(){
+        
     }
     
     public static Maestro crearMaestro(Maestro m){
@@ -207,13 +211,42 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
     
     public static void asignarClases(Maestro m){
         int clases_asignadas = 0;
-        String lista_disp = "";
-        while (clases_asignadas <= m.getMaxClases()){
-            
-            m.addClase(JOptionPane.showInputDialog(""
-                    + ""
-            ));
-            clases_asignadas ++;
+        String clase = "";
+        String lista_disp = "Clases Disponibles\n\n";
+        while (clases_asignadas <= m.getMaxClases() || clase.equals("n") ){
+            lista_disp += clasesDisp(lista_disp) + "\n Clases Asignadas = "
+                    + clases_asignadas + " de " + m.getMaxClases()
+                    + "\nIngrese 's' para terminar";
+            clase = JOptionPane.showInputDialog(""
+                    + lista_disp
+            );
+            if (existe(clase, m) == true){
+                m.addClase(clase);
+                clases_asignadas ++;
+            }
         }
+    }
+    
+    public static boolean existe(String seccion, Maestro m){
+        for (int x=0 ; x < clases.size() ; x++){
+            if ( clases.get(x).getSeccion().equals(seccion) 
+                    && clases.get(x).estado() == false){
+                clases.get(x).asignarClase();
+                m.addClassA(clases.get(x));
+                return true;
+            }
+        }
+        return false;
+    }
+    
+    public static String clasesDisp(String lista){
+        String lista2 = "";
+        for (int x =0 ; x < clases.size() ; x++){
+            if ( clases.get(x).estado() == false ){
+                lista2 += (x + 1) + ") " + (clases.get(x).getName() 
+                            + " / " + clases.get(x).getSeccion() + "\n" );
+            }
+        }
+        return lista2;
     }
 }
