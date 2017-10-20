@@ -12,13 +12,22 @@ import java.util.ArrayList;
  * @author JorgeLuis
  */
 public class Clase {
-    String nombre;
-    String seccion;
-    int max_alumnos;
-    String maestro;
-    int unidades_val;
-    ArrayList<String> alumnos;
+    private String nombre;
+    private String seccion;
+    private int max_alumnos;
+    private String maestro;
+    private int unidades_val;
+    private ArrayList<String> alumnos;
     private int cost;
+    private boolean asignada = false;
+    
+    public void asignarClase(){
+        asignada = true;
+    }
+    
+    public boolean estado(){
+        return asignada;
+    }
     
     public Clase(){
         alumnos = new ArrayList();
@@ -78,6 +87,10 @@ public class Clase {
     
     public int getCost(){
         return cost;
+    }
+    
+    public String toString(){
+        return nombre;
     }
    
 }

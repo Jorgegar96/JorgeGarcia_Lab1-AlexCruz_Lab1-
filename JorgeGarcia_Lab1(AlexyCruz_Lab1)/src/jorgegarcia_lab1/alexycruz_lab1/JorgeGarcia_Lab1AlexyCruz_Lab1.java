@@ -12,6 +12,7 @@ import javax.swing.JOptionPane;
  */
 public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
     
+    static String lista;
     static ArrayList<Clase> clases = new ArrayList();
     static ArrayList<Maestro> maestros = new ArrayList();
 
@@ -76,18 +77,18 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
         String opcion = "";
         while ( !opcion.equals("3") ){
             opcion = JOptionPane.showInputDialog(""
-                        + "Administración:"
-                        + "1) Crear Clases"
-                        + "2) Crear Maestros"
+                        + "Administración:\n\n"
+                        + "1) Administrar Clases\n"
+                        + "2) Administrar Maestros\n"
                         + "3) Salir"
             );
             switch ( opcion ){
                 case "1":
-                    crearClases();
+                    adminClases();
                     break;
                 case "2":
                     if (clases.size() > 0){
-                        
+                        adminMaestros();
                     }else{
                         JOptionPane.showMessageDialog(null,
                                 "No se hay creado ninguna clase aún"
@@ -98,8 +99,121 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
         }
     }
     
-    public static void crearClases(){
-        
+    public static void adminClases(){
+        String opcion = "";
+        while ( !opcion.contains("3") ){
+            opcion = JOptionPane.showInputDialog(""
+                        + "Clases:\n\n"
+                        + "1) Crear\n"
+                        + "2) Lista\n"
+                        + "3) Salir"
+            );
+            switch (opcion){
+                case "1":
+                    clases.add( crearClases(new Clase() ) );
+                    break;
+                case "2":
+                    listarClases();
+                    break;
+            }
+        }
     }
+    
+    public static Clase crearClases(Clase c){
+        c.setName(JOptionPane.showInputDialog(""
+                + "Ingrese el nombre de la clase:"
+                )
+        );
+        c.setSeccion(JOptionPane.showInputDialog(""
+                + "Ingrese la seccion de la clase:"
+                )
+        );
+        c.setMaxAlumnos(Integer.parseInt(JOptionPane.showInputDialog(""
+                + "Ingrese la cantidad maxima de alumnos de la clase:"
+                )
+        ));
+        c.setUnidadesV(Integer.parseInt(JOptionPane.showInputDialog(""
+                + "Ingrese las unidades valorativas de la clase:"
+                )
+        ));
+        c.setCost(Integer.parseInt(JOptionPane.showInputDialog(""
+                + "Ingrese el costo de la clase:"
+                )
+        ));
+        return c;
+    }
+    
+    public static void listarClases(){
+        lista = "Clases / Seccion\n\n";
+        for (int x=0 ; x < clases.size() ; x++){
+            lista += (x + 1) + ") " + (clases.get(x).getName()) 
+                        + " / " + (clases.get(x).getSeccion()) + "\n";
+        }
+        JOptionPane.showMessageDialog(null, lista);
+    }     
+    
+    public static void adminMaestros(){
+        String opcion = "";
+        while ( !opcion.contains("3") ){
+            opcion = JOptionPane.showInputDialog(""
+                        + "Clases:\n\n"
+                        + "1) Crear\n"
+                        + "2) Lista\n"
+                        + "3) Salir"
+            );
+            switch (opcion){
+                case "1":
+                    maestros.add( crearMaestro(new Maestro() ) );
+                    break;
+                case "2":
+                    listarClases();
+                    break;
+            }
+        }
+    }
+    
+    public static Maestro crearMaestro(Maestro m){
+        m.setName(JOptionPane.showInputDialog(""
+                + "Ingrese el nombre del maestro"
+                )
+        );
+        m.setTitulo(JOptionPane.showInputDialog(""
+                + "Ingrese el titulo:"
+                )
+        );
+        m.setMaestria(JOptionPane.showInputDialog(""
+                + "Ingrese la maestria"
+                )
+        );
+        m.setUser(JOptionPane.showInputDialog(""
+                + "Ingrese el usuario"
+                )
+        );
+        m.setPassword(JOptionPane.showInputDialog(""
+                + "Ingrese la contraseña"
+                )
+        );
+        m.setMaxClases(Integer.parseInt(JOptionPane.showInputDialog(""
+                + "Ingrese la cantidad máxima de clases"
+                )
+        ));
+        asignarClases(m);
+        m.setSalary(Integer.parseInt(JOptionPane.showInputDialog(""
+                + "Ingrese el salario"
+                )
+        ));
+        return m;
+    }
+    
+    public static void asignarClases(Maestro m){
+        int clases_asignadas = 0;
+        String lista_disp = "";
+        while (clases_asignadas <= m.getMaxClases()){
             
+            m.addClase(JOptionPane.showInputDialog(""
+                    + ""
+            ));
+            clases_asignadas ++;
+        }
+    }
 }

@@ -12,14 +12,15 @@ import java.util.ArrayList;
  * @author JorgeLuis
  */
 public class Maestro {
-    String nombre;
-    String titulo;
-    String maestria;
-    String usuario;
-    String contraseña;
-    int max_clases;
-    ArrayList<String> clase;
-    int salario;
+    private String nombre;
+    private String titulo;
+    private String maestria;
+    private String usuario;
+    private String contraseña;
+    private int max_clases;
+    private ArrayList<String> clase;
+    private int salario;
+    
     
     public Maestro(){
         clase = new ArrayList();
@@ -41,7 +42,7 @@ public class Maestro {
         return titulo;
     }
     
-    public void setMaestría(String maestria){
+    public void setMaestria(String maestria){
         this.maestria = maestria;
     }
     
@@ -73,7 +74,7 @@ public class Maestro {
         return max_clases;
     }
     
-    public void setClase(String clase){
+    public void addClase(String clase){
         this.clase.add(clase);
     }
     
