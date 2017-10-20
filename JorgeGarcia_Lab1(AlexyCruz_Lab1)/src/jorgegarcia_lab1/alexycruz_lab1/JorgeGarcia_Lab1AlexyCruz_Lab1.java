@@ -29,7 +29,7 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
                     administracion();
                     break;
                 case 2:
-                    matricula();
+                    matricula(new Alumno);
                     break;
                 case 3:
                     break;
@@ -253,7 +253,19 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
         return lista2;
     }
     
-    public static void matricula(){
-        
+    public static void matricula(Alumno a){
+        a.setName(JOptionPane.showInputDialog("Ingrese su nombre"));
+        a.setCuenta(JOptionPane.showInputDialog("Ingrese numero de cuneta"));
+        a.setCarrera(JOptionPane.showInputDialog("Ingrese su carrera:"));
+        a.setFondos(Double.parseDouble(JOptionPane.showInputDialog("Ingrese su edad")));
+        a.setEdad(Integer.parseInt(JOptionPane.showInputDialog("Ingrese sus fondos")));
+        a.setUser(JOptionPane.showInputDialog("Ingrese su Usuario"));
+        a.setPassword(JOptionPane.showInputDialog("Ingrese una contraseña"));
+        agregarClases(a);
+        a.setClases(JOptionPane.showInputDialog("Ingrese las clases que desea agregar"));
     } 
+    
+    public static void agregarClases(Alumno a){
+        
+    }
 }

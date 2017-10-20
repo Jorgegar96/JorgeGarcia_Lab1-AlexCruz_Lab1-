@@ -16,7 +16,7 @@ public class Alumno {
     String n_cuenta;
     String carrera;
     int edad;
-    private int dinero;
+    private double dinero;
     private String usuario;
     private String contraseña;
     private ArrayList<String> clases;
@@ -76,16 +76,16 @@ public class Alumno {
         return edad;
     }
     
-    public void setFondos(int dinero){
+    public void setFondos(double dinero){
         this.dinero = dinero;
     }
     
-    public int getFondos(){
+    public double getFondos(){
         return dinero;
     }
     
-    public void setClases(Clase c){
-        this.clasesA.add(c);
+    public void setClases(String c){
+        this.clases.add(c);
     }
     
     public void clasesString(){
