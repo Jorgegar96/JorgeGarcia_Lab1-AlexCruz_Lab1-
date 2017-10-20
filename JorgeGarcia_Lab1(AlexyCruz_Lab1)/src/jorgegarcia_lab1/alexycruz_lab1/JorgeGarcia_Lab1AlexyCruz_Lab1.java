@@ -16,7 +16,8 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
     static ArrayList<Clase> clases = new ArrayList();
     static ArrayList<Maestro> maestros = new ArrayList();
     static ArrayList<Alumno> alumnos = new ArrayList();
-    static Object logged = new Object();
+    static Alumno logged = new Alumno();
+    static Maestro loggedm = new Maestro();
 
     /**
      * @param args the command line arguments
@@ -333,16 +334,43 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
                     JOptionPane.showMessageDialog(null, "Contraseña Incorrecta");
                 }
             }
-            
+            String opcion = "";
+            if (loggedm != null ){
+                while (!opcion.equals("7")){
+                    JOptionPane.showInputDialog("1)Modificar Nombre\n"+
+                            "2) Modificar Salario" + 
+                            "3) Modificar Usuario" +
+                            "4) Modificar Contraseña" +
+                            "5) Modificar Titulo" +
+                            "6) Modificar Maestria" +
+                            "7) Salir");
+                    switch (opcion){
+                        case "1":
+                            loggedm.setSalary(Integer.parseInt(JOptionPane.showInputDialog("Ingrese nuevo salario")));
+                            break;
+                        case "2":
+                            loggedm.setUser(JOptionPane.showInputDialog("Ingrese nuevo usuario"));
+                            break;
+                        case "3":
+                            loggedm.setPassword((JOptionPane.showInputDialog("Ingrese nueva contraseña")));
+                            break;
+                        case "4":
+                            loggedm.setTitulo(JOptionPane.showInputDialog("Ingrese nuevo titulo"));
+                    }
+                }
+            }
         }
     }
     
     public static boolean usuarioValido(String user){
         for (int i = 0; i < alumnos.size() ; i++) {
-            if (alumnos.get(i).getUser().equals(user) || 
-                    maestros.get(i).getUser().equals(user) ){
+            if (alumnos.get(i).getUser().equals(user)){
+                logged = alumnos.get(i);
                 return true;
-            }else{
+            }else if (maestros.get(i).getUser().equals(user)){
+                loggedm = maestros.get(i);
+                return true;
+            }else {
                 return false;
             }
         }
@@ -360,4 +388,6 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
         }
         return false;
     }
+    
+    
 }
