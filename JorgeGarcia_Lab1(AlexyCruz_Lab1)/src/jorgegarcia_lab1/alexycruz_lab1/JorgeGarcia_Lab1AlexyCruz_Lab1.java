@@ -345,17 +345,23 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
                             "6) Modificar Maestria" +
                             "7) Salir");
                     switch (opcion){
-                        case "1":
+                        case "2":
                             loggedm.setSalary(Integer.parseInt(JOptionPane.showInputDialog("Ingrese nuevo salario")));
                             break;
-                        case "2":
+                        case "3":
                             loggedm.setUser(JOptionPane.showInputDialog("Ingrese nuevo usuario"));
                             break;
-                        case "3":
+                        case "4":
                             loggedm.setPassword((JOptionPane.showInputDialog("Ingrese nueva contraseña")));
                             break;
-                        case "4":
+                        case "5":
                             loggedm.setTitulo(JOptionPane.showInputDialog("Ingrese nuevo titulo"));
+                            break;
+                        case "6":
+                            loggedm.setMaestria(JOptionPane.showInputDialog("Ingrese la nueva maestria"));
+                            break;
+                        case "1":
+                            loggedm.setName(JOptionPane.showInputDialog("Ingrese nuevo nombre"));
                     }
                 }
             }
