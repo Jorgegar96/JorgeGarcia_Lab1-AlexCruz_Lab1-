@@ -237,7 +237,7 @@ public class JorgeGarcia_Lab1AlexyCruz_Lab1 {
         int clases_asignadas = 0;
         String clase = "";
         String lista_disp = "";
-        while (clases_asignadas <= m.getMaxClases() || clase.equals("n") ){
+        while (clases_asignadas <= m.getMaxClases() || !clase.equals("s") ){
             lista_disp = "Clases Disponibles\n\n" + 
                     clasesDisp(lista_disp) + "\n Clases Asignadas = "
                     + clases_asignadas + " de " + m.getMaxClases()
